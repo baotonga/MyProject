@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<configuration>  
+    <!-- 输出到控制台 -->  
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">  
+        <encoder>  
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}[%t]%-5p %c{36}.%M %m%n</pattern>  
+        </encoder>  
+    </appender>  
+  
+    <!-- 输出到文件 -->  
+    <appender name="file" class="ch.qos.logback.core.FileAppender">  
+        <file>${user.home}/logs/springboot.log</file>  
+        <!-- 默认是true -->  
+        <append>true</append>  
+        <encoder>  
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}[%t]%-5p %c{36}.%M %m%n</pattern>  
+        </encoder>
+    </appender>  
+  
+    <!-- additivity默认是true -->  
+    <logger name="cn.cjc.log.test.a" level="INFO" additivity="false">  
+        <appender-ref ref="file" />  
+    </logger>  
+      
+    <!-- 根logger的level默认值是DEBUG -->  
+    <root level="INFO"> 
+        <!-- 控制台输出 --> 
+        <appender-ref ref="console" />
+        <!-- 文件输出 -->
+        <appender-ref ref="file" />   
+    </root>  
+</configuration> 
